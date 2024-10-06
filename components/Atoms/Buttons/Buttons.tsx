@@ -6,10 +6,11 @@ type PropsType = {
     color?: 'primary' |'success' | 'danger' | 'warning',
     outline?: boolean,
     size?: 'small'| 'medium' | 'large',
-    text?: string
+    text?: string,
+    onPress?: () => void
 }
 
-const Buttons = ({color = 'primary', outline = false, size = 'medium', text = 'Button'}:PropsType)  => {
+const Buttons = ({color = 'primary', outline = false, size = 'medium', text = 'Button', onPress}:PropsType)  => {
 
     const getColorStyle = () => {
         switch (color) {
@@ -38,7 +39,7 @@ const Buttons = ({color = 'primary', outline = false, size = 'medium', text = 'B
     }
 
     return (
-        <Pressable style={[styles.baseButton, outline? styles.outline : getColorStyle(), getSizeStlye() ]}>
+        <Pressable style={[styles.baseButton, outline? styles.outline : getColorStyle(), getSizeStlye() ]} onPress={onPress}>
             <Text style={outline? styles.buttonTextDark : styles.buttonText }>{text}</Text>
         </Pressable>
     )

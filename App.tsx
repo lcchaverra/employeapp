@@ -10,9 +10,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='WelcomeScreen'>
-        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="SingUpScreen" component={SingupScreen} />
+        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{headerShown: false}} />
+        <Stack.Screen name="LoginScreen" component={LoginScreen} options={{headerTitle : 'Iniciar Sesión'}} />
+        <Stack.Screen name="SingUpScreen" component={SingupScreen} options={{headerTitle : 'Registro'}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
