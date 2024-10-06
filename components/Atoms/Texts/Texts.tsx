@@ -29,7 +29,6 @@ export default Texts
 const styles = StyleSheet.create({
     baseText: {
         color: '#253237',
-        fontFamily: 'Poppins-Regular',
         marginHorizontal: 30,
         textAlign: 'center'
     },

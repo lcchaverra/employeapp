@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { Pressable } from 'react-native'
+import { Pressable, Animated } from 'react-native'
 
 type PropsType = {
     color?: 'primary' |'success' | 'danger' | 'warning',
@@ -11,6 +11,18 @@ type PropsType = {
 }
 
 const Buttons = ({color = 'primary', outline = false, size = 'medium', text = 'Button', onPress}:PropsType)  => {
+    const fadeAnim = React.useRef(new Animated.Value(0)).current
+
+    const fade = () => {
+        Animated.timing(
+            fadeAnim,
+            {
+                toValue: 1,
+                duration: 500,
+                useNativeDriver: true
+            }
+        ).start();
+    }
 
     const getColorStyle = () => {
         switch (color) {
@@ -39,9 +51,11 @@ const Buttons = ({color = 'primary', outline = false, size = 'medium', text = 'B
     }
 
     return (
-        <Pressable style={[styles.baseButton, outline? styles.outline : getColorStyle(), getSizeStlye() ]} onPress={onPress}>
-            <Text style={outline? styles.buttonTextDark : styles.buttonText }>{text}</Text>
-        </Pressable>
+        <Animated.View >
+            <Pressable style={[styles.baseButton, outline? styles.outline : getColorStyle(), getSizeStlye() ]} onPress={onPress}>
+                <Text style={outline? styles.buttonTextDark : styles.buttonText }>{text}</Text>
+            </Pressable>
+        </Animated.View>
     )
 }
 
